@@ -18,7 +18,8 @@
               (click)="userMenuExpanded = !userMenuExpanded">
         <span class="sr-only">Open user menu</span>
         <span class="avatar-container">
-          <span class="avatar-text">{{this.avatarName}}</span>
+          <!-- <span class="avatar-text">{{this.avatarName}}</span> -->
+           <img [userProfile]="user.profile.sub" [displayName]="user.profile" size="32" />
         </span>
       </button>
 
