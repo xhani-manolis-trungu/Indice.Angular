@@ -50,7 +50,7 @@ export class ImgUserPictureDirective implements OnInit {
     }
 
     @Input('displayName')
-    public set setDisplayName(value: string | { given_name: string | undefined, family_name: string | undefined, firstName: string| undefined, lastName: string| undefined, email: string| undefined, name: string| undefined, userName: string| undefined }) {
+    public set setDisplayName(value: string | { given_name?: string | undefined, family_name?: string | undefined, firstName?: string| undefined, lastName?: string| undefined, email?: string| undefined, name?: string| undefined, userName?: string| undefined }) {
         if (!value) {
             return;
         }

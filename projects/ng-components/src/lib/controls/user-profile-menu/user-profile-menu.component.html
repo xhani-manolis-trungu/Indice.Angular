@@ -19,7 +19,7 @@
         <span class="sr-only">Open user menu</span>
         <span class="avatar-container">
           <!-- <span class="avatar-text">{{this.avatarName}}</span> -->
-           <img [userProfile]="user.profile.sub" [displayName]="user.profile" size="32" />
+           <img [userPicture]="user.profile.sub" [displayName]="user.profile.name || ''" [size]="32" />
         </span>
       </button>
 
