@@ -50,21 +50,33 @@ export class ImgUserPictureDirective implements OnInit {
     }
 
     @Input('displayName')
-    public set setDisplayName(value: string | { given_name?: string | undefined, family_name?: string | undefined, firstName?: string| undefined, lastName?: string| undefined, email?: string| undefined, name?: string| undefined, userName?: string| undefined }) {
+    public set setDisplayName(value: BaseUser | string) {
         if (!value) {
             return;
         }
         let text: string | undefined = this._displayName;
         if (typeof value === 'string') {
-            text = value    
+            text = value;
         } else {
-            text = `${value.firstName || ''} ${value.lastName || ''}`.trim() ? `${value.firstName || ''} ${value.lastName || ''}`.trim() : 
-                   `${value.given_name || ''} ${value.family_name || ''}`.trim() ? `${value.given_name || ''} ${value.family_name || ''}`.trim() :
-                   value.email ? value.email :
-                   value.userName ? value.userName : 
-                   value.name;
+            const firstName = value.firstName || '';
+            const lastName = value.lastName || '';
+            const givenName = value.given_name || '';
+            const familyName = value.family_name || '';
+            
+            // Construct the display name based on available properties
+            if (firstName || lastName) {
+                text = `${firstName} ${lastName}`.trim();
+            } else if (givenName || familyName) {
+                text = `${givenName} ${familyName}`.trim();
+            } else if (value.email) {
+                text = value.email;
+            } else if (value.userName) {
+                text = value.userName;
+            } else if (value.name) {
+                text = value.name;
+            }
         }
-        if (text !== 'string') {
+        if (!text) {
             return;
         }
         this._displayName = text.split('@')[0].replaceAll(/[\+\(\)\{\}\.,\[\]]/g, ' '); // removes any special characters
@@ -108,4 +120,14 @@ export class ImgUserPictureDirective implements OnInit {
         
         return hashHex;
     }
+}
+
+interface BaseUser {
+    given_name?: string | undefined,
+    family_name?: string | undefined,
+    firstName?: string | undefined,
+    lastName?: string | undefined,
+    email?: string | undefined,
+    name?: string | undefined,
+    userName?: string | undefined
 }
