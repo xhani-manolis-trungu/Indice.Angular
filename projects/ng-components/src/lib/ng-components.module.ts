@@ -60,9 +60,7 @@ import { ViewLayoutComponent } from './layouts/views/view-layout/view-layout.com
 import { LibTabLabelDirective, UserSettingsService } from '../public-api';
 import { ToggleButtonComponent } from './controls/toggle-button/toggle-button.component';
 import { ToggleButtonsListComponent } from './controls/toggle-buttons-list/toggle-buttons-list.component';
-import { ContentTileComponent } from './controls/content-tile/content-tile.component';
-import { ContentTileItemComponent } from './controls/content-tile/content-tile-item/content-tile-item.component';
-import { ContentTileHeaderComponent } from './controls/content-tile/content-tile-header/content-tile-header.component';
+import { ContentTileComponent, ContentTileHeaderComponent, ContentTileItemComponent } from './controls/content-tile/content-tile.component';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { StatsGridComponent } from './controls/stats-grid/stats-grid.component';
 import { ProgressBarComponent } from './controls/progress-bar/progress-bar.component';

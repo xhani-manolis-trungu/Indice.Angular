@@ -226,7 +226,8 @@ export enum SidePaneSize {
   Default = '',
   Small25 = '25%',
   Medium50 = '50%',
-  Large75 = '75%'
+  Large75 = '75%',
+  Fullscreen = '100%',
 }
 
 export enum SidePaneOverlayType {

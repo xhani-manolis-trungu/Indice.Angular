@@ -1,6 +1,22 @@
 @tailwind base;
 
 @layer base {
+  html {
+    scroll-behavior: smooth !important;
+  }
+  
+  input {
+    outline: none;
+  }
+  
+  input[type=number] {
+    outline: none;
+  }
+  
+  textarea {
+    outline: none;
+  }
+  
   h1 {
     @apply text-2xl;
   }
@@ -16,34 +32,5 @@
   a {
     @apply text-gray-600;
   }
-
-  select {
-    @apply block w-full rounded-lg border-0 py-1.5 pr-10 ring-1 ring-inset ring-gray-200 placeholder:text-gray-300 focus:ring-1 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6
-    disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200;
-  }
-
-  input[type=text] {
-    @apply block w-full rounded-lg border-0 py-1.5 pr-10 ring-1 ring-inset ring-gray-200 placeholder:text-gray-300 focus:ring-1 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6
-    disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200;
-  }
-
-  input[type=password] {
-    @apply block w-full rounded-lg border-0 py-1.5 pr-10 ring-1 ring-inset ring-gray-200 placeholder:text-gray-300 focus:ring-1 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6
-    disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200;
-  }
-
-  input[type=email] {
-    @apply block w-full rounded-lg border-0 py-1.5 pr-10 ring-1 ring-inset ring-gray-200 placeholder:text-gray-300 focus:ring-1 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6
-    disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200;
-  }
-
-  input[type=number] {
-    @apply block w-full rounded-lg border-0 py-1.5 pr-10 ring-1 ring-inset ring-gray-200 placeholder:text-gray-300 focus:ring-1 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6
-    disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200;
-  }
-
-  textarea {
-    @apply block w-full rounded-lg border-0 py-1.5 pr-10 ring-1 ring-inset ring-gray-200 placeholder:text-gray-300 focus:ring-1 focus:ring-inset focus:ring-gray-500 sm:text-sm sm:leading-6
-    disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200;
-  }
+   
 }
