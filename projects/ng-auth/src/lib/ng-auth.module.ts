@@ -6,10 +6,12 @@ import { AuthHttpInterceptor } from './auth-http-interceptor';
 import { AuthService } from './auth.service';
 import { TenantHeaderInterceptor } from './tenant/tenant-header.interceptor';
 import { TenantService } from './tenant/tenant-service';
+import { ImgUserPictureDirective } from './directives/user-picture.directive';
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule]
+  declarations: [ImgUserPictureDirective],
+  imports: [],
+  exports:[ImgUserPictureDirective]
 })
 export class IndiceAuthModule {
   // tslint:disable-next-line:typedef

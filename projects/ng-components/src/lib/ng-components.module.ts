@@ -20,7 +20,7 @@ import { DurationFormatPipe } from './pipes/duration-format.pipe';
 import { DynamicComponentHostDirective } from './directives/dynamic-component-host.directive';
 import { ErrorComponent } from './pages/http-status/error/error.component';
 import { FormLayoutComponent } from './layouts/views/form-layout/form-layout.component';
-import { IndiceAuthModule } from '@indice/ng-auth';
+import { ImgUserPictureDirective, IndiceAuthModule } from '@indice/ng-auth';
 import { KpiTileComponent } from './controls/kpi-tile/kpi-tile.component';
 import { LanguageSelectionComponent } from './controls/language-selection/language-selection.component';
 import { LibStepComponent } from './controls/stepper/lib-step.component';

@@ -1,9 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@indice/ng-auth';
-import { Subscription } from 'rxjs';
 import { APP_LINKS } from '../../tokens';
 import { User } from 'oidc-client-ts';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'lib-user-profile-menu',
@@ -13,6 +13,7 @@ export class UserProfileMenuComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
   @Input('show-user-name') showUserName: boolean | undefined = false;
+  @Input('show-picture') showPicture: boolean | undefined = false;
   protected userSub$: Subscription | null = null;
   protected statusSub$: Subscription | null = null;
   public user: User | null = null;
@@ -45,8 +46,8 @@ export class UserProfileMenuComponent implements OnInit {
 
   private setCurrentUser(user: any): void {
     this.user = user;
-    if (this.user && this.user.profile) {
-      this.avatarName = `${this.user.profile.given_name?.charAt(0)}${this.user.profile.family_name?.charAt(0)}`.toUpperCase();
+    if (user && user.profile && user.profile.given_name && user.profile.family_name) {
+      this.avatarName = `${user.profile.given_name.charAt(0)}${user.profile.family_name.charAt(0)}`.toUpperCase();
     }
   }
 

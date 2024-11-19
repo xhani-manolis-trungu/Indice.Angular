@@ -1,7 +1,7 @@
 
 
   .avatar-container {
-    @apply inline-flex items-center justify-center h-8 w-8 rounded-full ;
+    @apply inline-flex items-center justify-center h-8 w-8 rounded-full overflow-hidden;
   }
 
   .avatar-container-large {
