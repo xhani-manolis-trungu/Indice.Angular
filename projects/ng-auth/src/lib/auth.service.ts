@@ -137,6 +137,9 @@ export class AuthService {
     if (signInRedirectOptions?.location) {
       authorizeArgs['url_state'] =  signInRedirectOptions.location;
     }
+    if (signInRedirectOptions?.location) {
+      authorizeArgs.state = { url: signInRedirectOptions.location };
+    }
     if (signInRedirectOptions?.promptRegister === true) {
       authorizeArgs['extraQueryParams'] = { operation: 'register' };
     }
