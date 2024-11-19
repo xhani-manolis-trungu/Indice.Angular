@@ -10,5 +10,6 @@ export const SampleAppShellConfig: IShellConfig = {
   showFooter: true,
   showHeader: true,
   showLangsOnHeader: true,
-  showUserNameOnHeader : true
+  showUserNameOnHeader : true,
+  showPictureOnHeader : true
 };

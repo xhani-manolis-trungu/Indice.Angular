@@ -166,6 +166,7 @@ export interface IShellConfig {
   showHeader: boolean;
   showLangsOnHeader?: boolean;
   showUserNameOnHeader?: boolean;
+  showPictureOnHeader?: boolean;
 }
 
 export enum ShellLayoutType {
@@ -183,6 +184,7 @@ export class DefaultShellConfig implements IShellConfig {
   showFooter = true;
   showHeader = true;
   showUserNameOnHeader = false;
+  showPictureOnHeader = true;
 }
 
 export enum SCREEN_SIZE {
