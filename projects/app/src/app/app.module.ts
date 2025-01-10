@@ -49,6 +49,7 @@ import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, Mo
     DepthDetailsComponent,
     InboxComponent,
     InboxItemComponent,
+    ModalPlayGroundComponent,
     MoreDetailsComponent,
     MoreDetailsSubComponent,
     SampleComboboxComponent,
