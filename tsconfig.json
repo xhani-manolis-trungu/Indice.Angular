@@ -13,8 +13,13 @@
       ],
       "ng-components": [
         "dist/ng-components"
+      ],
+      "ng-conf": [
+        "dist/ng-conf"
       ]
     },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -30,6 +35,8 @@
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,

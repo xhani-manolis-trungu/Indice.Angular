@@ -37,6 +37,7 @@ import { ToggleButtonSampleComponent } from './components/toggle-button-sample/t
 import { ToggleButtonsListSampleComponent } from './components/toggle-buttons-list-sample/toggle-buttons-list-sample.component';
 import { AUTH_SETTINGS, AuthGuardService, AuthHttpInterceptor, AuthService, IndiceAuthModule } from 'projects/ng-auth/src/public-api';
 import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, ModalService, SHELL_CONFIG, ToasterService } from 'projects/ng-components/src/public-api';
+import { provideAppSettings } from '../../../ng-conf/src/lib/settings-initializer';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, Mo
     ReactiveFormsModule
   ],
   providers: [
+    provideAppSettings(),
     AuthService,
     AuthGuardService,
     ToasterService,
@@ -87,6 +89,5 @@ import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, Mo
     { provide: APP_NOTIFICATIONS, useClass: AppNotificationsService },
     { provide: APP_LANGUAGES, useClass: AppLanguagesService }
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule { }
