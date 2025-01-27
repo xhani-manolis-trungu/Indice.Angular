@@ -1,5 +1,6 @@
 
 export interface IAppSettings {
+    [index: string]: any;
     api_url: string;
     api_docs: string;
     auth_settings: IAuthSettings;
@@ -11,6 +12,7 @@ export interface IAppSettings {
 }
 
 export interface IAuthSettings {
+    [index: string]: any;
     authority: string;
     client_id: string;
     filterProtocolClaims: boolean;

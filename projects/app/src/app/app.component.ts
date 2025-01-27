@@ -1,6 +1,6 @@
 import { Component, Inject } from "@angular/core";
 import { AUTH_SETTINGS } from "projects/ng-auth/src/lib/tokens";
-import { APP_SETTINGS } from "projects/ng-conf/src/lib/tokens";
+import { APP_SETTINGS, IAUTH_SETTINGS } from "projects/ng-conf/src/lib/tokens";
 import { IAppSettings } from 'projects/ng-conf/src/lib/types';
 
 
@@ -18,8 +18,9 @@ import { IAppSettings } from 'projects/ng-conf/src/lib/types';
 })
 export class AppComponent {
   title = 'app';
-  constructor(@Inject(AUTH_SETTINGS) private authSettings: IAppSettings, @Inject(APP_SETTINGS) private appSettings: IAppSettings) {
-    console.log(`AUTH_SETTINS: `, authSettings)
+  constructor(@Inject(IAUTH_SETTINGS) private iauthSettings: IAppSettings, @Inject(APP_SETTINGS) private appSettings: IAppSettings, @Inject(AUTH_SETTINGS) authSettings: IAppSettings) {
+    console.log(`IAUTH_SETTINS: `, iauthSettings)
     console.log(`APP_SETTINGS: `, appSettings)
-   }
+    console.log(`AUTH_SETTINGS: `, authSettings)
+  }
 }

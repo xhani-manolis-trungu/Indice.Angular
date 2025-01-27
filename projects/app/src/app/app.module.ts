@@ -38,7 +38,13 @@ import { ToggleButtonsListSampleComponent } from './components/toggle-buttons-li
 import { AUTH_SETTINGS, AuthGuardService, AuthHttpInterceptor, AuthService, IndiceAuthModule } from 'projects/ng-auth/src/public-api';
 import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, ModalService, SHELL_CONFIG, ToasterService } from 'projects/ng-components/src/public-api';
 import { provideAppSettings } from 'projects/ng-conf/src/lib/settings-initializer';
-import { APP_ENVIRONMENT } from 'projects/ng-conf/src/public-api';
+import { APP_ENVIRONMENT, IAUTH_SETTINGS } from 'projects/ng-conf/src/public-api';
+import { IAuthSettings } from 'projects/ng-conf/src/lib/types';
+
+export function initializeAuthSettings(iAuthSettings:  IAuthSettings) {
+  const authSettings = {...iAuthSettings};
+  return authSettings;
+}
 
 @NgModule({
   declarations: [
@@ -85,6 +91,8 @@ import { APP_ENVIRONMENT } from 'projects/ng-conf/src/public-api';
     { provide: APP_LINKS, useFactory: () => new AppLinks() },
     { provide: SHELL_CONFIG, useFactory: () => SampleAppShellConfig },
     { provide: APP_ENVIRONMENT, useValue: environment },
+    { provide: IAUTH_SETTINGS, useValue: {} },
+    { provide: AUTH_SETTINGS, useFactory: initializeAuthSettings, deps: [IAUTH_SETTINGS] },
     { provide: APP_LANGUAGES, useClass: AppLanguagesService },
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
     { provide: APP_NOTIFICATIONS, useClass: AppNotificationsService },

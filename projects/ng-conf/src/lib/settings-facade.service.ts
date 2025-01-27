@@ -11,7 +11,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AppSettingsState, SettingsDataService } from './settings.service';
 import { IAppSettings, IAuthSettings, AppProvidersArray } from './types';
-import { APP_ENVIRONMENT, APP_SETTINGS, APP_PROVIDERS_ARRAY } from './tokens';
+import { APP_ENVIRONMENT, APP_SETTINGS, APP_PROVIDERS_ARRAY, IAUTH_SETTINGS } from './tokens';
 
 const initialState: Readonly<AppSettingsState> = {
     settings: {
@@ -36,11 +36,15 @@ export class SettingsFacadeService {
     readonly #state = signal(initialState);
     readonly settings = computed(() => this.#state().settings);
 
-    constructor(@Inject(APP_SETTINGS) private tokenAppsettings: IAppSettings, @Inject(APP_PROVIDERS_ARRAY) private appProvidersArray: AppProvidersArray) { }
+    constructor(
+        @Inject(APP_SETTINGS) private tokenAppsettings: IAppSettings,
+        @Inject(APP_PROVIDERS_ARRAY) private appProvidersArray: AppProvidersArray,
+        @Inject(IAUTH_SETTINGS) private authSettings: IAppSettings) { }
 
     getAppDependencies() {
         return this.appProvidersArray?.dependencies;
     }
+
 
     loadSettings(): Observable<boolean> {
         return this.#settingsDataService.getAppSettings().pipe(
@@ -49,6 +53,7 @@ export class SettingsFacadeService {
                 let runtimeSettings = merge(cloneDeep(this.#environment), settings);
                 // Assign settings directly to the appSettings object
                 Object.assign(this.tokenAppsettings, runtimeSettings);
+                Object.assign(this.authSettings, this.tokenAppsettings.auth_settings);
 
                 // Update the state
                 this.#state.set({ settings: this.tokenAppsettings });

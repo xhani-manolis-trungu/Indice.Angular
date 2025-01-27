@@ -1,21 +1,16 @@
 import {
   APP_INITIALIZER,
   EnvironmentProviders,
-  InjectionToken,
   Injector,
-  makeEnvironmentProviders,
-  StaticProvider
+  makeEnvironmentProviders
 } from '@angular/core';
-import { IAppSettings, AppProvidersArray } from './types';
-import { SettingsFacadeService } from './settings-facade.service';
 import { lastValueFrom } from 'rxjs';
-import { APP_ENVIRONMENT, APP_SETTINGS, APP_PROVIDERS_ARRAY, APP_SETTINGS_MANIFEST_URL } from './tokens';
-import { AUTH_SETTINGS } from '@indice/ng-auth';
+import { SettingsFacadeService } from './settings-facade.service';
+import { APP_ENVIRONMENT, APP_PROVIDERS_ARRAY, APP_SETTINGS, APP_SETTINGS_MANIFEST_URL, IAUTH_SETTINGS } from './tokens';
+import { AppProvidersArray, IAppSettings } from './types';
 
 export function initializeAppSettings(
   appSettingsFacade: SettingsFacadeService,
-  config: AppProvidersArray,
-  injector: Injector
 ) {
   return async () => {
     // Wait for settings to load
@@ -36,11 +31,11 @@ export function provideAppSettings(config: AppProvidersArray = {}): EnvironmentP
   return makeEnvironmentProviders([
     {
       provide: APP_SETTINGS_MANIFEST_URL,
-      useValue: config?.manifestUrl || '/assets/app-settings.manifest.json'
+      useValue: '/assets/app-settings.manifest.json'
     },
     {
       provide: APP_PROVIDERS_ARRAY,
-      useValue: config?.dependencies || []
+      useValue: config.dependencies || []
     },
     {
       provide: APP_SETTINGS, 
@@ -53,11 +48,11 @@ export function provideAppSettings(config: AppProvidersArray = {}): EnvironmentP
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppSettings,
-      deps: [SettingsFacadeService, APP_SETTINGS, Injector], // Add Injector to deps
+      deps: [SettingsFacadeService], // Add Injector to deps
       multi: true,
     },
     {
-      provide: AUTH_SETTINGS,
+      provide: IAUTH_SETTINGS,
       useFactory: (runtimeSettings: IAppSettings) => runtimeSettings.auth_settings,
       deps: [APP_SETTINGS],
     }
