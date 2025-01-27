@@ -20,10 +20,13 @@ export class ShellHeaderComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:no-input-rename
   @Input('show-userName') showUserNameOnHeader: boolean | undefined = false;
   // tslint:disable-next-line:no-input-rename
+  @Input('show-picture') showPictureOnHeader: boolean | undefined = true;
+  // tslint:disable-next-line:no-input-rename
   @Input('show-alerts') showAlerts: boolean | undefined = false;
   // tslint:disable-next-line:no-input-rename
   @Input('show-langs') showLangs: boolean | undefined = false;
   @Input() border = true;
+  @Input() busy: boolean = false;
   public sectionLinks: Observable<NavLink[]> = of([]);
   public mobileMenuExpanded = false;
   public userMenuExpanded = false;

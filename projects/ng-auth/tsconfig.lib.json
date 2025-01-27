@@ -9,11 +9,8 @@
     "types": [],
     "lib": [
       "dom",
-      "es2018"
-    ],
-    "paths": {
-      "@indice/ng-auth": ["projects/ng-auth/src/public-api.ts"]
-    }
+      "ES2022"
+    ]
   },
   "angularCompilerOptions": {
     "compilationMode": "partial",

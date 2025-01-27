@@ -13,6 +13,7 @@ export class UserProfileMenuComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
   @Input('show-user-name') showUserName: boolean | undefined = false;
+  @Input('show-picture') showPicture: boolean | undefined = false;
   protected userSub$: Subscription | null = null;
   protected statusSub$: Subscription | null = null;
   public user: User | null = null;

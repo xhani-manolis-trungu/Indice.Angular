@@ -69,6 +69,13 @@ export class NotificationNavLink extends NavLink {
   }
 }
 
+export class NavLinkSeparator extends NavLink {
+  constructor(text: string, path: string, public isRead: boolean, public creationDate?: Date) {
+    super('', '');
+   }
+   public type = 'separator';
+  }
+
 export class ViewAction {
   public type: string;
   public key: string | null;
@@ -166,6 +173,7 @@ export interface IShellConfig {
   showHeader: boolean;
   showLangsOnHeader?: boolean;
   showUserNameOnHeader?: boolean;
+  showPictureOnHeader?: boolean;
 }
 
 export enum ShellLayoutType {
@@ -183,6 +191,7 @@ export class DefaultShellConfig implements IShellConfig {
   showFooter = true;
   showHeader = true;
   showUserNameOnHeader = false;
+  showPictureOnHeader = true;
 }
 
 export enum SCREEN_SIZE {
@@ -219,7 +228,8 @@ export enum SidePaneSize {
   Default = '',
   Small25 = '25%',
   Medium50 = '50%',
-  Large75 = '75%'
+  Large75 = '75%',
+  Fullscreen = '100%',
 }
 
 export enum SidePaneOverlayType {

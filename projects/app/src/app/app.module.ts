@@ -56,7 +56,6 @@ import { APP_ENVIRONMENT } from 'projects/ng-conf/src/public-api';
     MoreDetailsSubComponent,
     SampleComboboxComponent,
     SampleInfoComponent,
-    SampleModalComponent,
     SampleStepperComponent,
     SampleTabsComponent,
     ShellSamplesListComponent,
