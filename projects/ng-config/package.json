@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/indice-co/Indice.Angular.git"
   },
+  "keywords": [
+    "angular",
+    "configuration"
+  ],
   "author": "INDICE",
   "license": "MIT",
   "bugs": {
@@ -17,8 +21,9 @@
     "@angular/core": "^17.3.0",
     "@indice/ng-auth": "0.3.3"
   },
-  "dependencies": {
+  "devDependencies": {
     "tslib": "^2.3.0"
   },
+  "dependencies": {},
   "sideEffects": false
 }
