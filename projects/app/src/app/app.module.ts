@@ -85,7 +85,6 @@ import { APP_ENVIRONMENT } from 'projects/ng-conf/src/public-api';
     ModalService,
     { provide: APP_LINKS, useFactory: () => new AppLinks() },
     { provide: SHELL_CONFIG, useFactory: () => SampleAppShellConfig },
-    { provide: AUTH_SETTINGS, useFactory: () => environment.auth_settings },
     { provide: APP_ENVIRONMENT, useValue: environment },
     { provide: APP_LANGUAGES, useClass: AppLanguagesService },
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

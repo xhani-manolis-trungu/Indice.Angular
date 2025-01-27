@@ -35,8 +35,6 @@
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
