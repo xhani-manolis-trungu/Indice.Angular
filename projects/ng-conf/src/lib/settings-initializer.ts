@@ -6,16 +6,15 @@ import {
   makeEnvironmentProviders,
   StaticProvider
 } from '@angular/core';
-import { IAppSettings, SettingsLibraryConfig } from './types';
+import { IAppSettings, AppProvidersArray } from './types';
 import { SettingsFacadeService } from './settings-facade.service';
 import { lastValueFrom } from 'rxjs';
-import { APP_SETTINGS, APP_SETTINGS_LIBRARY_CONFIG, APP_SETTINGS_MANIFEST_URL } from './tokens';
+import { APP_ENVIRONMENT, APP_SETTINGS, APP_PROVIDERS_ARRAY, APP_SETTINGS_MANIFEST_URL } from './tokens';
 import { AUTH_SETTINGS } from '@indice/ng-auth';
 
 export function initializeAppSettings(
   appSettingsFacade: SettingsFacadeService,
-  appSettings: IAppSettings,
-  config: SettingsLibraryConfig,
+  config: AppProvidersArray,
   injector: Injector
 ) {
   return async () => {
@@ -23,9 +22,9 @@ export function initializeAppSettings(
     const success = await lastValueFrom(appSettingsFacade.loadSettings());
 
     if (success) {
-      const providers = config.dependencies as StaticProvider[];
+      const dependencies = appSettingsFacade.getAppDependencies() as any[];
       // Create a child injector with the dependencies
-      Injector.create({ providers: providers, parent: injector });
+      Injector.create({ providers: dependencies });
     } else {
       console.error('Failed to initialize app settings.');
       throw new Error('App settings could not be loaded.');
@@ -33,19 +32,23 @@ export function initializeAppSettings(
   };
 }
 
-export function provideAppSettings(config: SettingsLibraryConfig = {}): EnvironmentProviders {
+export function provideAppSettings(config: AppProvidersArray = {}): EnvironmentProviders {
   return makeEnvironmentProviders([
     {
       provide: APP_SETTINGS_MANIFEST_URL,
-      useValue: config.manifestUrl || '/assets/app-settings.manifest.json'
+      useValue: config?.manifestUrl || '/assets/app-settings.manifest.json'
+    },
+    {
+      provide: APP_PROVIDERS_ARRAY,
+      useValue: config?.dependencies || []
     },
     {
       provide: APP_SETTINGS, 
       useValue: {} // Provide an empty object initially
     },
     {
-      provide: APP_SETTINGS_LIBRARY_CONFIG,
-      useValue: config,
+      provide: APP_ENVIRONMENT,
+      useValue: {}
     },
     {
       provide: APP_INITIALIZER,

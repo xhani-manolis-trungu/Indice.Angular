@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -37,7 +37,8 @@ import { ToggleButtonSampleComponent } from './components/toggle-button-sample/t
 import { ToggleButtonsListSampleComponent } from './components/toggle-buttons-list-sample/toggle-buttons-list-sample.component';
 import { AUTH_SETTINGS, AuthGuardService, AuthHttpInterceptor, AuthService, IndiceAuthModule } from 'projects/ng-auth/src/public-api';
 import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, ModalService, SHELL_CONFIG, ToasterService } from 'projects/ng-components/src/public-api';
-import { provideAppSettings } from '../../../ng-conf/src/lib/settings-initializer';
+import { provideAppSettings } from 'projects/ng-conf/src/lib/settings-initializer';
+import { APP_ENVIRONMENT } from 'projects/ng-conf/src/public-api';
 
 @NgModule({
   declarations: [
@@ -82,12 +83,14 @@ import { provideAppSettings } from '../../../ng-conf/src/lib/settings-initialize
     AuthGuardService,
     ToasterService,
     ModalService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-    { provide: AUTH_SETTINGS, useFactory: () => environment.auth_settings },
-    { provide: SHELL_CONFIG, useFactory: () => SampleAppShellConfig },
     { provide: APP_LINKS, useFactory: () => new AppLinks() },
+    { provide: SHELL_CONFIG, useFactory: () => SampleAppShellConfig },
+    { provide: AUTH_SETTINGS, useFactory: () => environment.auth_settings },
+    { provide: APP_ENVIRONMENT, useValue: environment },
+    { provide: APP_LANGUAGES, useClass: AppLanguagesService },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
     { provide: APP_NOTIFICATIONS, useClass: AppNotificationsService },
-    { provide: APP_LANGUAGES, useClass: AppLanguagesService }
   ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

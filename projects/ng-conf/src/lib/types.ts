@@ -1,4 +1,3 @@
-import { StaticProvider } from "@angular/core";
 
 export interface IAppSettings {
     api_url: string;
@@ -27,7 +26,7 @@ export interface IAuthSettings {
     automaticSilentRenew: boolean;
 }
 
-export interface SettingsLibraryConfig {
-    dependencies?: StaticProvider[];
+export interface AppProvidersArray {
+    dependencies?: any[];
     manifestUrl?: string;
 }

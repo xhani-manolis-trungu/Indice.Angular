@@ -10,8 +10,8 @@ import merge from 'lodash/merge';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { AppSettingsState, SettingsDataService } from './settings.service';
-import { IAppSettings, IAuthSettings } from './types';
-import { APP_ENVIRONMENT, APP_SETTINGS } from './tokens';
+import { IAppSettings, IAuthSettings, AppProvidersArray } from './types';
+import { APP_ENVIRONMENT, APP_SETTINGS, APP_PROVIDERS_ARRAY } from './tokens';
 
 const initialState: Readonly<AppSettingsState> = {
     settings: {
@@ -36,7 +36,11 @@ export class SettingsFacadeService {
     readonly #state = signal(initialState);
     readonly settings = computed(() => this.#state().settings);
 
-    constructor(@Inject(APP_SETTINGS) private tokenAppsettings: IAppSettings) { }
+    constructor(@Inject(APP_SETTINGS) private tokenAppsettings: IAppSettings, @Inject(APP_PROVIDERS_ARRAY) private appProvidersArray: AppProvidersArray) { }
+
+    getAppDependencies() {
+        return this.appProvidersArray?.dependencies;
+    }
 
     loadSettings(): Observable<boolean> {
         return this.#settingsDataService.getAppSettings().pipe(
