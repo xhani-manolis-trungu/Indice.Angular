@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -37,6 +37,14 @@ import { ToggleButtonSampleComponent } from './components/toggle-button-sample/t
 import { ToggleButtonsListSampleComponent } from './components/toggle-buttons-list-sample/toggle-buttons-list-sample.component';
 import { AUTH_SETTINGS, AuthGuardService, AuthHttpInterceptor, AuthService, IndiceAuthModule } from 'projects/ng-auth/src/public-api';
 import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, ModalService, SHELL_CONFIG, ToasterService } from 'projects/ng-components/src/public-api';
+import { provideAppSettings } from 'projects/ng-config/src/lib/settings-initializer';
+import { APP_ENVIRONMENT, IAUTH_SETTINGS } from 'projects/ng-config/src/public-api';
+import { IAuthSettings } from 'projects/ng-config/src/lib/types';
+
+export function initializeAuthSettings(iAuthSettings:  IAuthSettings) {
+  const authSettings = {...iAuthSettings};
+  return authSettings;
+}
 
 @NgModule({
   declarations: [
@@ -75,17 +83,20 @@ import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, Mo
     ReactiveFormsModule
   ],
   providers: [
+    provideAppSettings(),
     AuthService,
     AuthGuardService,
     ToasterService,
     ModalService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-    { provide: AUTH_SETTINGS, useFactory: () => environment.auth_settings },
-    { provide: SHELL_CONFIG, useFactory: () => SampleAppShellConfig },
     { provide: APP_LINKS, useFactory: () => new AppLinks() },
+    { provide: SHELL_CONFIG, useFactory: () => SampleAppShellConfig },
+    { provide: APP_ENVIRONMENT, useValue: environment },
+    { provide: IAUTH_SETTINGS, useValue: {} },
+    { provide: AUTH_SETTINGS, useFactory: initializeAuthSettings, deps: [IAUTH_SETTINGS] },
+    { provide: APP_LANGUAGES, useClass: AppLanguagesService },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
     { provide: APP_NOTIFICATIONS, useClass: AppNotificationsService },
-    { provide: APP_LANGUAGES, useClass: AppLanguagesService }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

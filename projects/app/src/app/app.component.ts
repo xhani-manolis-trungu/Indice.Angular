@@ -1,4 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Inject } from "@angular/core";
+import { AUTH_SETTINGS } from "projects/ng-auth/src/lib/tokens";
+import { APP_SETTINGS, IAUTH_SETTINGS } from "projects/ng-config/src/lib/tokens";
+import { IAppSettings } from 'projects/ng-config/src/lib/types';
+
 
 @Component({
   selector: 'app-root',
@@ -14,5 +18,9 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = 'app';
-  constructor() { }
+  constructor(@Inject(IAUTH_SETTINGS) private iauthSettings: IAppSettings, @Inject(APP_SETTINGS) private appSettings: IAppSettings, @Inject(AUTH_SETTINGS) authSettings: IAppSettings) {
+    console.log(`IAUTH_SETTINS: `, iauthSettings)
+    console.log(`APP_SETTINGS: `, appSettings)
+    console.log(`AUTH_SETTINGS: `, authSettings)
+  }
 }

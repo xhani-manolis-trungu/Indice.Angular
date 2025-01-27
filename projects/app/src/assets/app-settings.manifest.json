@@ -1,0 +1,8 @@
+{
+  "auth_settings": {
+    "authority": "https://localhost:4011",
+    "clientId": "neon-portal-ui"
+  },
+  "extraEnvVariable": "test",
+  "isServed": true
+}
