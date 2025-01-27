@@ -10,7 +10,7 @@
     "build-app": "ng build app --configuration=production ",
     "build-auth": "ng build ng-auth --configuration=production ",
     "build-components": "ng build ng-components --configuration=production",
-    "build-conf": "ng build ng-conf --configuration=production",
+    "build-config": "ng build ng-config --configuration=production",
     "postbuild-components": "ts-node ./projects/ng-components/scripts/css-bundle.ts",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,6 +19,7 @@
     "ts-node": "ts-node",
     "publish-components": "cd projects/ng-components && cd../.. && ng build ng-components --configuration=production && ts-node ./projects/ng-components/scripts/css-bundle.ts && cd dist/ng-components && npm publish",
     "publish-auth": "cd projects/ng-auth && cd../.. && ng build ng-auth --configuration=production && cd dist/ng-auth && npm publish",
+    "publish-config": "cd projects/ng-config && cd../.. && ng build ng-config --configuration=production && cd dist/ng-config && npm publish",
     "publish-components-beta": "cd projects/ng-components && npm version prerelease --preid beta && cd../.. && ng build ng-components --configuration=production && ts-node ./projects/ng-components/scripts/css-bundle.ts && cd dist/ng-components && npm publish",
     "publish-auth-beta": "cd projects/ng-auth && npm version prerelease --preid beta && cd../.. && ng build ng-auth --configuration=production && cd dist/ng-auth && npm publish"
   },

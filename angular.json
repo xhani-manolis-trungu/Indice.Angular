@@ -171,23 +171,23 @@
         }
       }
     },
-    "ng-conf": {
+    "ng-config": {
       "projectType": "library",
-      "root": "projects/ng-conf",
-      "sourceRoot": "projects/ng-conf/src",
+      "root": "projects/ng-config",
+      "sourceRoot": "projects/ng-config/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/ng-conf/ng-package.json"
+            "project": "projects/ng-config/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ng-conf/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ng-config/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/ng-conf/tsconfig.lib.json"
+              "tsConfig": "projects/ng-config/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -195,7 +195,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "tsConfig": "projects/ng-conf/tsconfig.spec.json",
+            "tsConfig": "projects/ng-config/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

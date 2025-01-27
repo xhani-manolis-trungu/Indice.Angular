@@ -15,7 +15,7 @@
         "dist/ng-components"
       ],
       "ng-conf": [
-        "dist/ng-conf"
+        "dist/ng-config"
       ]
     },
     "allowSyntheticDefaultImports": true,

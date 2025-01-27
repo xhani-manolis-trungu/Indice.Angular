@@ -1,5 +1,5 @@
 {
-  "name": "@indice/ng-conf",
+  "name": "@indice/ng-config",
   "version": "0.0.1",
   "description": "Indice dynamic runtime configuration provider for applications",
   "repository": {

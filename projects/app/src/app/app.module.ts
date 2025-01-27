@@ -37,9 +37,9 @@ import { ToggleButtonSampleComponent } from './components/toggle-button-sample/t
 import { ToggleButtonsListSampleComponent } from './components/toggle-buttons-list-sample/toggle-buttons-list-sample.component';
 import { AUTH_SETTINGS, AuthGuardService, AuthHttpInterceptor, AuthService, IndiceAuthModule } from 'projects/ng-auth/src/public-api';
 import { APP_LANGUAGES, APP_LINKS, APP_NOTIFICATIONS, IndiceComponentsModule, ModalService, SHELL_CONFIG, ToasterService } from 'projects/ng-components/src/public-api';
-import { provideAppSettings } from 'projects/ng-conf/src/lib/settings-initializer';
-import { APP_ENVIRONMENT, IAUTH_SETTINGS } from 'projects/ng-conf/src/public-api';
-import { IAuthSettings } from 'projects/ng-conf/src/lib/types';
+import { provideAppSettings } from 'projects/ng-config/src/lib/settings-initializer';
+import { APP_ENVIRONMENT, IAUTH_SETTINGS } from 'projects/ng-config/src/public-api';
+import { IAuthSettings } from 'projects/ng-config/src/lib/types';
 
 export function initializeAuthSettings(iAuthSettings:  IAuthSettings) {
   const authSettings = {...iAuthSettings};
