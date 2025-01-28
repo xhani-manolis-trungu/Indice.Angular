@@ -1,7 +1,7 @@
 {
   "auth_settings": {
-    "authority": "https://localhost:4011",
-    "clientId": "neon-portal-ui"
+    "authority": "https://my.indice.gr",
+    "clientId": "test-ui"
   },
   "extraEnvVariable": "test",
   "isServed": true

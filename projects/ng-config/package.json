@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/indice-co/Indice.Angular.git"
   },
+  "keywords": [
+    "angular",
+    "configuration"
+  ],
   "author": "INDICE",
   "license": "MIT",
   "bugs": {
@@ -13,12 +17,12 @@
   },
   "homepage": "https://github.com/indice-co/Indice.Angular#readme",
   "peerDependencies": {
-    "@angular/common": "^17.3.0",
-    "@angular/core": "^17.3.0",
-    "@indice/ng-auth": "0.3.3"
+    "@angular/common": ">=17.3.0",
+    "@angular/core": ">=17.3.0"
   },
-  "dependencies": {
+  "devDependencies": {
     "tslib": "^2.3.0"
   },
+  "dependencies": {},
   "sideEffects": false
 }
