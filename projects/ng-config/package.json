@@ -17,9 +17,8 @@
   },
   "homepage": "https://github.com/indice-co/Indice.Angular#readme",
   "peerDependencies": {
-    "@angular/common": "^17.3.0",
-    "@angular/core": "^17.3.0",
-    "@indice/ng-auth": "0.3.3"
+    "@angular/common": ">=17.3.0",
+    "@angular/core": ">=17.3.0"
   },
   "devDependencies": {
     "tslib": "^2.3.0"
